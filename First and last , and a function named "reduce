@@ -1,0 +1,59 @@
+#include <iostream>
+
+int sum_from_to(int first, int last) {
+    int sum = 0;
+    for(int i = first; i <= last; ++i) {
+        sum += i;
+    }
+    return sum;
+}
+
+int main() {
+    int first = 3;
+    int last = 7;
+    int result = sum_from_to(first, last);
+    std::cout << "The sum from " << first << " to " << last << " is: " << result << std::endl;
+    return 0;
+}
+#include <iostream>
+
+// Function to calculate the greatest common divisor (GCD) using the Euclidean algorithm
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int reduce(int &num, int &denom) {
+    // Check if either of the arguments is zero or negative
+    if (num <= 0 || denom <= 0) {
+        return 0;
+    }
+
+    // Calculate the greatest common divisor (GCD) of num and denom
+    int gcd_value = gcd(num, denom);
+
+    // Reduce the fraction by dividing both num and denom by their GCD
+    num /= gcd_value;
+    denom /= gcd_value;
+
+    return 1;
+}
+
+int main() {
+    int num = 8;
+    int denom = 12;
+
+    int result = reduce(num, denom);
+
+    if (result == 1) {
+        std::cout << "The reduced fraction is: " << num << "/" << denom << std::endl;
+    } else {
+        std::cout << "Failed to reduce the fraction. Ensure both numerator and denominator are positive." << std::endl;
+    }
+
+    return 0;
+}
